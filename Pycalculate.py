@@ -8,6 +8,7 @@ printed_numbers = '0'
 def numbers(num):
     global pad
     pad = pad + str(num)
+    print(pad)
 
 def atualization():
     global printed_numbers
@@ -29,8 +30,8 @@ label_expression = tk.Label(width=28, height=2, bg='black', justify='right', for
 label_expression.place(x = 20, y=24)
 
 n1 = tk.Button(calculate, text=1, width=8, height=2, command=numbers(1)).place(x = 20, y=70)
-n2 = tk.Button(calculate, text=2, width=8, height=2).place(x = 90, y=70)
-n3 = tk.Button(calculate, text=2, width=8,height=2).place(x = 160, y=70)
+n2 = tk.Button(calculate, text=2, width=8, height=2, command=numbers).place(x = 90, y=70)
+n3 = tk.Button(calculate, text=2, width=8,height=2,command=numbers).place(x = 160, y=70)
 
 n4 = tk.Button(calculate, text=4, width=8, height=2).place(x = 20, y=120)
 n5 = tk.Button(calculate, text=5, width=8, height=2).place(x = 90, y=120)
