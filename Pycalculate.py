@@ -2,80 +2,135 @@ import math as m
 import tkinter as tk
 
 expression = 0
-n1 = 0
-n2 = 0
+first_number = ''
+second_number = ''
+result = ''
 pad = ''
-printed_numbers = '0'
+printed_numbers = ''
 
 class Numbers():
-
+    
     def n1(self):
         global pad
+        global printed_numbers
+        printed_numbers = printed_numbers + '1'
         pad = pad + '1'
-        print (pad)
+
+       
     
     def n2(self):
         global pad
+        global printed_numbers
+        printed_numbers = printed_numbers + '2'
         pad = pad + '2'
-        print (pad)
+        
 
     def n3(self):
         global pad
+        global printed_numbers
+        printed_numbers = printed_numbers + '3'
         pad = pad + '3'
-        print (pad)
+        
 
     def n4(self):
         global pad
+        global printed_numbers
+        printed_numbers = printed_numbers + '4'
         pad = pad + '4'
-        print (pad)
+        
 
     def n5(self):
         global pad
+        global printed_numbers
+        printed_numbers = printed_numbers + '5'
         pad = pad + '5'
-        print (pad)
+        
 
     def n6(self):
         global pad
+        global printed_numbers
+        printed_numbers = printed_numbers + '6'
         pad = pad + '6'
-        print (pad)   
+           
 
     def n7(self):
         global pad
+        global printed_numbers
+        printed_numbers = printed_numbers + '7'
         pad = pad + '7'
-        print (pad) 
+         
 
     def n8(self):
         global pad
+        global printed_numbers
+        printed_numbers = printed_numbers + '8'
         pad = pad + '8'
-        print (pad)
+        
 
     def n9(self):
         global pad
+        global printed_numbers
+        printed_numbers = printed_numbers + '9'
         pad = pad + '9'
-        print (pad)
+
 
     def n0(self):
         global pad
+        global printed_numbers
+        printed_numbers = printed_numbers + '0'
         pad = pad + '0'
-        print (pad)
+        
 
-    def point(self):
+    def comma(self):
         global pad
+        global printed_numbers
+        printed_numbers = printed_numbers + ','
         pad = pad + '.'
-        print (pad)
+
+    def plus(self):
+        global pad
+        global printed_numbers
+        printed_numbers = printed_numbers + '+'
+
+    def multi(self):
+        global pad
+        global printed_numbers
+        printed_numbers = printed_numbers + 'x'
+        
+        
 
 
 def atualization():
     global printed_numbers
-    label_expression.config(text = pad) 
-    label_expression.after(100, atualization) 
+    label_expression.config(text = printed_numbers) 
+    label_expression.after(1, atualization) 
 
 def soma():
-    global expression
-    global printed_numbers
+    global first_number
+    global second_number
     global pad
-    expression += int(pad)
-    printed_numbers = printed_numbers + '+' + str(pad)
+    global result
+    global printed_numbers
+    printed_numbers = printed_numbers + '+'
+    
+    if first_number == '' and result == '':
+        first_number = float(pad)
+        pad = ''
+        
+
+    else:
+        if second_number == '' and result == '':
+            second_number = float(pad)
+            result = (first_number) + (second_number)
+            pad = ''
+            print(result)
+        else:
+            second_number = float(pad)
+            result += second_number
+            pad = ''
+            print(result)
+
+    
     pass
 
 calculate = tk.Tk()
@@ -100,12 +155,12 @@ n9 = tk.Button(calculate, text=9, width=8, height=2, command=numbers.n9).place(x
 
 div = tk.Button(calculate, text='/', width=8,height=2).place(x = 20, y=220)
 n0 = tk.Button(calculate, text=0, width=8, height=2, command=numbers.n0).place(x = 90, y=220)
-point = tk.Button(calculate, text='.', width=8, height=2, command=numbers.point).place(x = 160, y=220)
+comma = tk.Button(calculate, text=',', width=8, height=2, command=numbers.comma).place(x = 160, y=220)
 equal = tk.Button(calculate, text='=', width=8, height=2).place(x = 230, y=220)
 
 
 delete = tk.Button(calculate, text='⌦', width=8,height=2).place(x = 230, y=20)
-mult = tk.Button(calculate, text='*', width=8,height=2).place(x = 230, y=70)
+mult = tk.Button(calculate, text='*', width=8,height=2, command=numbers.multi).place(x = 230, y=70)
 sub = tk.Button(calculate, text='-', width=8, height=2).place(x = 230, y=120)
 sum = tk.Button(calculate, text='+', width=8, height=2, command=soma).place(x = 230, y=170)
 calculate.mainloop()
