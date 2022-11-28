@@ -2,6 +2,8 @@ import math as m
 import tkinter as tk
 
 expression = 0
+n1 = 0
+n2 = 0
 pad = ''
 printed_numbers = '0'
 
