@@ -7,6 +7,7 @@ second_number = ''
 result = ''
 pad = ''
 printed_numbers = ''
+mecanism = ''
 
 class Numbers():
     
@@ -110,12 +111,14 @@ def soma():
     global second_number
     global pad
     global result
+    global mecanism
     global printed_numbers
     printed_numbers = printed_numbers + '+'
     
     if first_number == '' and result == '':
         first_number = float(pad)
         pad = ''
+        mecanism = 'soma'
         
 
     else:
@@ -123,15 +126,38 @@ def soma():
             second_number = float(pad)
             result = (first_number) + (second_number)
             pad = ''
+            mecanism = 'soma'
             print(result)
         else:
             second_number = float(pad)
             result += second_number
             pad = ''
+            mecanism = 'soma'
             print(result)
 
 def equal():
-    
+    global first_number
+    global second_number
+    global pad
+    global result
+    global printed_numbers
+    global mecanism
+
+    if second_number != '' and result != '' and mecanism == 'soma':
+        second_number = float(pad)
+        result += second_number
+        pad = ''
+        printed_numbers = result
+        print(result)
+
+    elif second_number == '' and result =='' and mecanism =='soma':
+        second_number = float(pad)
+        result = (first_number) + (second_number)
+        pad = ''
+        mecanism = 'soma'
+        printed_numbers = result
+        print(result)
+
     pass
 
 calculate = tk.Tk()
@@ -157,7 +183,7 @@ n9 = tk.Button(calculate, text=9, width=8, height=2, command=numbers.n9).place(x
 div = tk.Button(calculate, text='/', width=8,height=2).place(x = 20, y=220)
 n0 = tk.Button(calculate, text=0, width=8, height=2, command=numbers.n0).place(x = 90, y=220)
 comma = tk.Button(calculate, text=',', width=8, height=2, command=numbers.comma).place(x = 160, y=220)
-equal = tk.Button(calculate, text='=', width=8, height=2).place(x = 230, y=220)
+buttomequal = tk.Button(calculate, text='=', width=8, height=2, command=equal).place(x = 230, y=220)
 
 
 delete = tk.Button(calculate, text='⌦', width=8,height=2).place(x = 230, y=20)
