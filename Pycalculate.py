@@ -130,6 +130,7 @@ def soma():
             pad = ''
             print(result)
 
+def equal():
     
     pass
 
